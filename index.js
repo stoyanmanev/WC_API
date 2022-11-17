@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require('cors');
+const compression = require("compression");
+const helmet = require("helmet");
 
 const {PORT} = require('./globals');
 const {getWCMatches} = require('./getters');
@@ -7,9 +9,11 @@ const {getNextDatesInString} = require('./helpers');
 
 const app = express();
 
-app.use(cors())
+app.use(compression());
+app.use(helmet());
+app.use(cors());
 
-app.get("/", async(_, response) => {
+app.get("/matches", async(_, response) => {
     const responseData = {
         success: true, 
         error: false,
