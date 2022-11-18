@@ -1,10 +1,11 @@
 const express = require('express');
-const matches = require("./matches");
+const {matches} = require("./matches");
 
 const router = express.Router();
 
-router.get("/matches", function(_, res) {
-  res.json(matches);
+router.get("/matches", async function(_, res) {
+  const responseData = await matches();
+  res.json(responseData);
 });
 
 module.exports = router;
