@@ -17,4 +17,4 @@ app.use(cors());
 
 app.use('/', routes);
 
-app.listen(port, () => console.log(`Server running on localhost:${port}`));
+app.listen(port, () => console.log(`Server running on PORT ${port}`));

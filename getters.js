@@ -3,6 +3,8 @@ const axios = require("axios");
 
 
 function getWCMatches(url, condition, date){
+    console.log(`${url}-${date}`);
+
     return axios.get(`${url}-${date}`).then(response => {
         const html = response.data;
         const $ = cheerio.load(html);
