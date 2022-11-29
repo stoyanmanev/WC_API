@@ -16,6 +16,8 @@ function getWCMatches(url, condition, date){
             const away = $(this).find('.away').text();
             const score = $(this).find('.score').text();
             const isPlaying = $(this).find('.score.play').text() ? true : false;
+            const minutes = isPlaying === true ? $(this).find('.status.play').text().trim() : null;
+            const startHour = $(this).find('.time').text();
             let finished = false;
 
             if(isPlaying === false){
@@ -30,6 +32,8 @@ function getWCMatches(url, condition, date){
                 away,
                 score,
                 date,
+                startHour,
+                minutes,
                 isPlaying,
                 finished
             };
