@@ -12,6 +12,10 @@ function getWCMatches(url, condition, date){
         const matchesList = [];
 
         matches.each(function () {
+            const match = {
+                home: $(this).find('.home').text(),
+                away: $(this).find('.away').text()
+            }
             const home = $(this).find('.home').text();
             const away = $(this).find('.away').text();
             const score = $(this).find('.score').text();
@@ -27,9 +31,16 @@ function getWCMatches(url, condition, date){
                 }
             }
 
+            // If a match contains panalties, API returns two star symbols before the winner.
+            if(home.includes('*')){
+                match.home = match.home.replaceAll('*', '')
+            }else if(away.includes('*')){
+                match.away = match.away.replaceAll('*', '')
+            }
+
             const response = {
-                home,
-                away,
+                home: match.home,
+                away: match.away,
                 score,
                 date,
                 startHour,
