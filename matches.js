@@ -8,7 +8,7 @@ async function matches(){
         matches: []
     }
     
-    for(let i = -4; i < 4; i++){     // todo return i to -1    
+    for(let i = -1; i < 4; i++){  
         const stringDate = getNextDatesInString(i);
         
         const matches = await getWCMatches("https://tipster.bg/machove/data", "#ngames a.game[href*='svetovno-parvenstvo']", stringDate);
